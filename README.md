@@ -3,11 +3,11 @@ This project was part of my Full Stack Web Developer Nanodegree at Udacity. In t
 
 ### Database Structure
 Assume we want to model the menus of some restaurants in a database.
-![Image of three restaurant menus](https://github.com/michi1992/SQLAlchemy-intro/blob/master/images_for_readme/overview.png)
+![Image of three restaurant menus](https://github.com/michi1992/item-catalog/blob/master/images_for_readme/overview.png)
 
 Therefore we will use the following database structure:
 
-![Image of the Databasestructure](https://github.com/michi1992/SQLAlchemy-intro/blob/master/images_for_readme/database_structure.png)
+![Image of the Databasestructure](https://github.com/michi1992/item-catalog/blob/master/images_for_readme/database_structure.png)
 
 The database consists of two tables called ``restaurant`` and ``menu_item`` and its columns like name, id, etc. Additionally the ``menu_item`` holds a foreign key to the related restaurant id.
 
@@ -16,9 +16,9 @@ We are using a virtual machine (VM) to run an SQL database server and a Python s
 
 
 ## Usage
-1. Clone this repository by executing ``git clone https://github.com/michi1992/SQLAlchemy-intro`` into your terminal window.
-2. [Install the virtual machine.](https://github.com/michi1992/SQLAlchemy-intro/blob/master/vm-setup.md)
-3. Enter ``cd SQLAlchemy-intro/vagrant`` to switch to the vagrant directory.
+1. Clone this repository by executing ``git clone https://github.com/michi1992/item-catalog`` into your terminal window.
+2. [Install the virtual machine.](https://github.com/michi1992/item-catalog/blob/master/vm-setup.md)
+3. Enter ``cd item-catalog/vagrant`` to switch to the vagrant directory.
 4. Start the virtual-machine: ``vagrant up``.
 5. Log into the VM: ``vagrant ssh``
 6. When you are successfully logged in, type ``cd /vagrant`` to switch the working directory.
