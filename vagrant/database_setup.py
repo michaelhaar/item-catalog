@@ -12,12 +12,12 @@ class Category(Base):
     __tablename__ = "categories"
 
     # map python objects to columns in our database
-    name = Column(String(250), nullable=False)
     id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
 
     items = relationship("Item",
-                         order_by=Address.id,
-                         back_populates="categories")
+                         order_by="Item.id",
+                         back_populates="category")
 
 
 class Item(Base):
@@ -33,5 +33,5 @@ class Item(Base):
 
 
 # insert at the end of the file
-engine = create_engine("sqlite:///restaurantmenu.db")
+engine = create_engine("sqlite:///itemcatalog.db")
 Base.metadata.create_all(engine)
