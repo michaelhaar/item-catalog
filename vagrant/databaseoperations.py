@@ -4,6 +4,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, Item
+import os
 
 
 def db_create(session):
@@ -110,35 +111,70 @@ class DatabaseOperations:
         self.session = db_session()
 
 
-    def add_item(self):
-        pass
-
-
     def add_category(self, cat_name):
         # create an instance of the category class
-        cat_soccer = Category(name=cat_name)
+        category = Category(name=cat_name)
         # add the category to the "staging zone"
-        self.session.add(cat_soccer)
+        self.session.add(category)
         # make the changes persistant
         self.session.commit()
 
-
     def get_categories(self):
         # Querying the database can be done through the ".query(..)" method.
-        # ".all()" will give us a list of restaurant objects
-        categories = self.session.query(Category).all()
-        for category in categories:
-            print(category.name+"\n")
-
-        # more query commands can be found here:
+        # ".all()" will give us a list of Category objects
+        # more query commands can be found at:
         # http://docs.sqlalchemy.org/en/rel_0_9/orm/query.html
+        return self.session.query(Category).all()
+
+    def get_category_by_name(self, cat_name):
+        return self.session.query(Category).filter_by(name=cat_name).one()
+
+    def category_count(self):
+        return self.session.query(Category).count()
+
+    def add_item(self, itm_title, itm_description, itm_category):
+        item = Item(title=itm_title,
+                    description=itm_description,
+                    category=itm_category)
+        self.session.add(category)
+        self.session.commit()
+
+    def get_items_of_category(self, cat_name):
+        category = self.get_category_by_name(cat_name)
+        return self.session.query(Item).filter_by(category=category).all()
+
+
 
 
 
 
 if __name__ == "__main__":
+
     db = DatabaseOperations()
 
-    db.add_category("Soccer")
-    db.add_category("Icehockey")
-    db.get_categories()
+    # Add the following categories to the database if no categories exits
+    if db.category_count() == 0:
+        db.add_category("Soccer")
+        db.add_category("Basketball")
+        db.add_category("Baseball")
+        db.add_category("Frisbee")
+        db.add_category("Snowboarding")
+        db.add_category("Rock Climbing")
+        db.add_category("Foosball")
+        db.add_category("Skating")
+        db.add_category("Hockey")
+
+    # Display available categories
+    categories = db.get_categories()
+    for category in categories:
+        print(category.name+"\n")
+
+
+    # Let's try to create an Item
+    cat_soccer = db.get_category_by_name("Soccer")
+    db.add_item("Ball","Best ball ever",cat_soccer)
+    soccer_items = db.get_items_of_category("Soccer")
+    for soccer_item in soccer_items:
+        print(soccer_item.title)
+        print(soccer_item.description)
+        print(soccer_item.category.name)
