@@ -1,0 +1,51 @@
+body {
+  background-color: #dddddd;
+}
+
+a {
+  color: #e34e06;
+}
+
+.list-group {
+  list-style-type: none;
+}
+
+.container {
+  box-shadow: 10px 10px 50px -17px rgba(0,0,0,0.75);
+  background-color: white;
+}
+
+.row {
+  padding: 10px;
+}
+
+.btn-outline-orange {
+  color: #e34e06;
+  background-color: transparent;
+  background-image: none;
+  border-color: #e34e06;
+  font-weight: 500;
+}
+
+/* Create a customized Bootstrap button */
+.btn-outline-orange:hover {
+  color: #fff;
+  background-color: #e34e06;
+  border-color: #e34e06;
+}
+
+.btn-outline-orange:focus, .btn-outline-orange.focus {
+  box-shadow: 0 0 0 3px #f95c11;
+}
+
+.btn-outline-orange.disabled, .btn-outline-orange:disabled {
+  color: #e34e06;
+  background-color: transparent;
+}
+
+.btn-outline-orange:active, .btn-outline-orange.active,
+.show > .btn-outline-orange.dropdown-toggle {
+  color: #fff;
+  background-color: #e34e06;
+  border-color: #e34e06;
+}
