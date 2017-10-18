@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #3F51B5;
+    --secondary-color: #FFD54F;
+}
+
+.floating-btn-custon {
+    background: var(--secondary-color) none repeat scroll 0 0;
+    color: #fff;
+    z-index: 1000;
+}
+
+.floating-btn-custon:hover {
+    background: #FFC107 none repeat scroll 0 0;
+}
