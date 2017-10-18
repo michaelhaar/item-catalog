@@ -90,10 +90,6 @@ def db_delete(session):
     spinach_ice_cream = session.query(MenuItem).filter_by(name="Spinach Ice Cream").one()
     print(spinach_ice_cream.restaurant.name)
 
-
-def create_category(session, name):
-    pass
-
 class DatabaseOperations:
     """TODO: add docstring here """
 
@@ -136,45 +132,16 @@ class DatabaseOperations:
         item = Item(title=itm_title,
                     description=itm_description,
                     category=itm_category)
-        self.session.add(category)
+        self.session.add(item)
         self.session.commit()
 
     def get_items_of_category(self, cat_name):
         category = self.get_category_by_name(cat_name)
         return self.session.query(Item).filter_by(category=category).all()
 
+    def get_latest_items(self):
+        return self.session.query(Item).limit(5)
 
-
-
-
-
-if __name__ == "__main__":
-
-    db = DatabaseOperations()
-
-    # Add the following categories to the database if no categories exits
-    if db.category_count() == 0:
-        db.add_category("Soccer")
-        db.add_category("Basketball")
-        db.add_category("Baseball")
-        db.add_category("Frisbee")
-        db.add_category("Snowboarding")
-        db.add_category("Rock Climbing")
-        db.add_category("Foosball")
-        db.add_category("Skating")
-        db.add_category("Hockey")
-
-    # Display available categories
-    categories = db.get_categories()
-    for category in categories:
-        print(category.name+"\n")
-
-
-    # Let's try to create an Item
-    cat_soccer = db.get_category_by_name("Soccer")
-    db.add_item("Ball","Best ball ever",cat_soccer)
-    soccer_items = db.get_items_of_category("Soccer")
-    for soccer_item in soccer_items:
-        print(soccer_item.title)
-        print(soccer_item.description)
-        print(soccer_item.category.name)
+    def get_item_by_title(self, cat_name, itm_title):
+        category = self.get_category_by_name(cat_name)
+        return self.session.query(Item).filter_by(category=category, title=itm_title).first()

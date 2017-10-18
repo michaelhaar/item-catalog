@@ -7,12 +7,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- My CSS -->
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark mb-3" style="background-color: #011f41;">
-      <a class="navbar-brand" href="#">Catalog App</a>
+      <a class="navbar-brand" href="/">Catalog App</a>
       <form class="form-inline" action="https://google.com">
         <button class="btn btn-outline-orange my-2 my-sm-0" type="submit">Login</button>
       </form>
@@ -21,29 +21,26 @@
     <!-- Content -->
     <div class="container">
       <!-- Content here -->
+      {% block content %}
       <div class="row">
         <div class="col-12 col-md-4" style="border: 1px solid rgba(86,61,124,.2);">
           <h4>Categories</h4>
           <ul class="list-group">
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
+            {% for category in categories %}
+                <li><a href="{{ url_for('show_category', category_name=category.name) }}">{{ category.name }}</a></li>
+            {% endfor %}
           </ul>
         </div>
         <div class="col-12 col-md-8 " style="border: 1px solid rgba(86,61,124,.2);">
-          <h4>Latest Items</h4>
+          <h4>{{ list_group_title }}</h4>
           <ul class="list-group">
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
-            <li><a href= https://google.com>Google</a></li>
+            {% for item in items %}
+                <li><a href="{{ url_for('show_item', category_name=item.category.name, item_title=item.title) }}">{{ item.title }}</a></li>
+            {% endfor %}
           </ul>
         </div>
       </div>
+      {% endblock %}
     </div>
 
     <!-- Optional JavaScript -->
