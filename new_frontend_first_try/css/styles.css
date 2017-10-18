@@ -55,3 +55,12 @@
   background-color: rgba(var(--secondary-color-rbg), 0.27);
 
 }
+
+/*================================== Body ===================================*/
+.mb {
+  margin-bottom: 20px;
+}
+
+body {
+  padding-top: 70px;
+}
