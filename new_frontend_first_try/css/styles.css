@@ -1,14 +1,57 @@
 :root {
-    --primary-color: #3F51B5;
-    --secondary-color: #FFD54F;
+  --primary-color: #3F51B5;
+  --secondary-color: #FFCA28;
+  --secondary-color-rbg: 255, 202, 40;
 }
 
-.floating-btn-custon {
-    background: var(--secondary-color) none repeat scroll 0 0;
-    color: #fff;
-    z-index: 1000;
+.floating-btn-custom {
+  background: var(--secondary-color) none repeat scroll 0 0;
+  color: #fff;
+  z-index: 1000;
 }
 
-.floating-btn-custon:hover {
-    background: #FFC107 none repeat scroll 0 0;
+.floating-btn-custom:hover {
+  background: #FFC107 none repeat scroll 0 0;
+}
+
+.bg-primary.navbar-inverse {
+  background-color: var(--primary-color);
+}
+
+/* ================================ Navbar ==================================*/
+.navbar-default {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  /* Sets the background color of the navbar */
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a {
+  color: white;
+  /* Sets the text color of the navbar LINKS and BRAND*/
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  /* Set the text hover color of the navbar LINKS and BRAND */
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  text-decoration: none;
+}
+
+.dropdown-menu>li>a {
+  /* Set the color of the DROPDOWN entries */
+  color: rgba(0,0,0, 0.56);
+  font-weight: 500;
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  /* change the hover color of the DROPDOWN entries here */
+  color: rgba(0,0,0, 0.87);
+  text-decoration: none;
+  background-color: rgba(var(--secondary-color-rbg), 0.27);
+
 }

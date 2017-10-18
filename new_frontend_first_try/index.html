@@ -8,7 +8,7 @@
     <title>Propeller Basic HTML Template</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!--Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Propeller css -->
@@ -16,7 +16,27 @@
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <!-- Basic nav menu which will remain fixed at the top -->
+    <nav class="navbar navbar-default navbar-fixed-top pmd-navbar pmd-z-depth">
+      <div class="container-fluid">
+
+        <a href="javascript:void(0);" class="navbar-brand">Catalog App</a>
+
+        <ul class="nav navbar-nav pull-right">
+          <li><a class="pmd-ripple-effect" href="javascript:void(0);"><i class="material-icons pmd-sm">delete</i></a></li>
+          <li><a class="pmd-ripple-effect" href="javascript:void(0);"><i class="material-icons pmd-sm">edit  </i></a></li>
+          <li class="dropdown pmd-dropdown">
+            <a data-toggle="dropdown" class="pmd-ripple-effect dropdown-toggle" data-sidebar="true" href="javascript:void(0);">
+              <i class="material-icons pmd-sm">more_vert</i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a class="pmd-ripple-effect" href="javascript:void(0);">Edit Profile</a></li>
+              <li><a class="pmd-ripple-effect" href="javascript:void(0);">Signout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Floating Action Button like Google Material -->
     <!-- see: http://propeller.in/docs/floating-button.php -->
@@ -37,18 +57,16 @@
     		<span class="pmd-floating-hidden">Dialpad</span>
     		<i class="material-icons">dialpad</i>
     	</a>
-    	<a class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-warning" data-title="Add" href="javascript:void(0);">
+    	<a class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-warning floating-btn-custom" data-title="Add" href="javascript:void(0);">
     		<span class="pmd-floating-hidden">Primary</span>
     		<i class="material-icons pmd-sm">add</i>
     	</a>
     </div>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- jQuery before Propeller.js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/propeller.min.js"></script>
   </body>
 </html>
