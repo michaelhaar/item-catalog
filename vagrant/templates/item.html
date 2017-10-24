@@ -1,7 +1,19 @@
 {% extends "main.html" %}
 {% block content %}
-    <h4>{{ item.title }}</h4>
-    <p class="item-desc">
-      {{ item.description }}
-    </p>
+
+  <!-- The content of the `navigationbar.html` file will be rendered here -->
+  {% include "navigationbar.html" %}
+
+  <!-- Card -->
+  <div class="pmd-card pmd-card-default pmd-z-depth pmd-card-custom-form">
+      <div class="pmd-card-title">
+          <h2 class="pmd-card-title-text">{{ item.title }}</h2>
+      </div>
+      <div class="pmd-card-body"> {{ item.description }} </div>
+  </div>
+
+  {% if session.logged_in %}
+    {% include "floating_button.html" %}
+  {% endif %}
+
 {% endblock %}

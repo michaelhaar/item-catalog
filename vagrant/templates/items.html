@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+
+  <!-- The content of the `navigationbar.html` file will be rendered here -->
+  {% include "navigationbar.html" %}
+
+  <!-- display all items of this category -->
+  <div class="list-group pmd-z-depth pmd-list pmd-card-list mb">
+    {% for item in items %}
+      <a class="list-group-item" href="{{ url_for('show_item', category_name=category, item_name=item.title) }}">
+        {{ item.title }}
+      </a>
+    {% endfor %}
+  </div>
+
+{% endblock %}

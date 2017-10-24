@@ -1,3 +1,12 @@
-__pycache__
-*.pyc
-.vagrant
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+### Vagrant ###
+.vagrant/
+
+
+### Google OAuth ###
+client_secrets.json

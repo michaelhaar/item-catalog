@@ -1,0 +1,13 @@
+<!-- Floating Action Button like Google Material -->
+<!-- see: http://propeller.in/docs/floating-button.php -->
+<div class="menu pmd-floating-action" role="navigation">
+  <a class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-default" data-title="Delete" href="{{ url_for('del_item', item_name=item.title) }}">
+    		<span class="pmd-floating-hidden">Edit</span>
+    		<i class="material-icons">delete</i>
+        <!-- TODO: this popup on hovering is not working on smartphones -->
+    	</a>
+  <a class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-warning floating-btn-custom" data-title="Edit" href="{{ url_for('edit_item', item_name=item.title) }}">
+    		<span class="pmd-floating-hidden">Primary</span>
+    		<i class="material-icons pmd-sm">edit</i>
+    	</a>
+</div>

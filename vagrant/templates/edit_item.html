@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="{{ url_for('edit_item', item_name=item.title) }}" method="post">
+  <div class="pmd-card card-default pmd-z-depth">
+
+    <div class="pmd-card-title card-header-border text-center">
+      <h2>Edit <strong>{{ item.title }}</strong></h2>
+    </div>
+
+    <div class="pmd-card-body">
+      <!-- Regular Input -->
+      <div class="form-group">
+        <label for="item-title" class="control-label">Title</label>
+        <input required type="text" id="item-title" class="form-control" value="{{ item.title }}" name="new-title">
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label for="item-desc" class="control-label">Description</label>
+        <textarea id="item-desc" class="form-control" name="new-desc">{{ item.description }}</textarea>
+      </div>
+
+      <!-- Bootstrap Selectbox -->
+      <div class="form-group">
+        <label for="item-cat" class="control-label">Select Category</label>
+        <select required id="item-cat" class="form-control" name="new-category">
+          {% for category in categories %}
+            <option>{{ category.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!--Warning button with a ripple effect -->
+      <button type="submit" class="btn pmd-ripple-effect btn-warning btn-block"> SUBMIT </button >
+    </div>
+  </div>
+</form>
+{% endblock %}
