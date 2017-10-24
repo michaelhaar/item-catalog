@@ -2,7 +2,7 @@
 
 <!-- This file is a Jinja2 template.
 A template contains so called `variables` and/or `expressions`, which get
-replaced with values when a template is rendered.
+replaced with values when a template is rendered. Jinja is awesome!
 see: http://jinja.pocoo.org/docs/2.9/templates/ -->
 
 <html lang="en">
@@ -11,11 +11,8 @@ see: http://jinja.pocoo.org/docs/2.9/templates/ -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Catalog App</title>
 
-    <!-- This website uses the Bootstrap and Propeller (https://propeller.in) frameworks -->
-    <!-- TODO add more documentation -->
+    <title>Catalog App</title>
 
     <!-- Bootstrap css-->
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -24,6 +21,8 @@ see: http://jinja.pocoo.org/docs/2.9/templates/ -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Propeller css -->
+    <!-- Propeller is a front-end responsive framework based on Google's
+     Material Design Standards & Bootstrap. see: https://propeller.in/  -->
     <link href="{{ url_for('static', filename='css/propeller.min.css') }}" rel="stylesheet">
 
     <!-- Custom css -->
@@ -41,7 +40,7 @@ see: http://jinja.pocoo.org/docs/2.9/templates/ -->
 
     <div class="container">
       {% block content %}
-      <!-- 'template inheritance' again ... Children can/will override this part -->
+      <!-- This is again 'template inheritance' ... Children can/will override this part -->
       {% endblock %}
     </div>
 

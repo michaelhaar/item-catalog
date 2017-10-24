@@ -1,12 +1,5 @@
-<!-- Basic nav menu which will remain fixed at the top -->
 <nav class="navbar navbar-default navbar-fixed-top pmd-navbar pmd-z-depth">
   <div class="container-fluid">
-    <!-- TODO add a back button
-    <ul class="nav navbar-nav pull-left">
-      <li><a id="back-button" class="pmd-ripple-effect" title="Go back" href="#" onclick="window.history.back(); return false;">
-        <i class="material-icons pmd-sm">arrow_back</i></a>
-      </li>
-    </ul> -->
 
     <a href="javascript:void(0);" class="navbar-brand">{{ page_heading }}</a>
 
@@ -17,15 +10,6 @@
         {% else %}
           <a class="pmd-ripple-effect" href="{{ url_for('login') }}">Sign-in</a>
         {% endif %}
-      </li>
-      <li class="dropdown pmd-dropdown">
-        <a data-toggle="dropdown" class="pmd-ripple-effect dropdown-toggle" data-sidebar="true" href="javascript:void(0);">
-              <i class="material-icons pmd-sm">more_vert</i>
-            </a>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a class="pmd-ripple-effect" href="javascript:void(0);">Edit Profile</a></li>
-          <li><a class="pmd-ripple-effect" href="javascript:void(0);">Signout</a></li>
-        </ul>
       </li>
     </ul>
   </div>

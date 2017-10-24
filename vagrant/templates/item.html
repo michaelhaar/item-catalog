@@ -1,7 +1,6 @@
 {% extends "main.html" %}
 {% block content %}
-
-  <!-- The content of the `navigationbar.html` file will be rendered here -->
+  <!-- The content of the `navigationbar.html` file will be included here -->
   {% include "navigationbar.html" %}
 
   <!-- Card -->
@@ -12,6 +11,7 @@
       <div class="pmd-card-body"> {{ item.description }} </div>
   </div>
 
+  <!-- Show the floating button only if the user is logged in. -->
   {% if session.logged_in %}
     {% include "floating_button.html" %}
   {% endif %}
