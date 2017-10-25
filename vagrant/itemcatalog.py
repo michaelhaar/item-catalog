@@ -75,10 +75,40 @@ def show_item(category_name, item_name):
                             item=db.get_item_by_title(item_name))
 
 
-@app.route('/catalog/<item_name>/edit', methods=['GET', 'POST'])
-def edit_item(item_name):
+@app.route('/catalog/<category_name>/add', methods=['GET', 'POST'])
+def add_item(category_name):
+    if 'g_user_id' not in flask.session:
+        # User is not authenticated
+        return flask.redirect(flask.url_for('show_categories'))
+
     if flask.request.method == 'POST':
         # receive values from html form
+        #TODO do we need some security checks?
+        item_title = flask.request.form['item-title']
+        item_desc = flask.request.form['item-desc']
+        # store item in our database
+        db.add_item(item_title, item_desc, category_name, flask.session)
+        # redirect/forward to the items list of this category
+        return flask.redirect(flask.url_for(
+            'show_items',
+            category_name=category_name))
+    else:
+        # GET Request --> render form
+        return render_template("add_item.html",
+                               category=category_name)
+
+@app.route('/catalog/<item_name>/edit', methods=['GET', 'POST'])
+def edit_item(item_name):
+    if 'g_user_id' not in flask.session:
+        # User is not authenticated
+        return flask.redirect(flask.url_for('show_categories'))
+    if db.user_authorization(item_name, flask.session) == False:
+        # User is not authorized to make changes
+        return flask.redirect(flask.url_for('show_categories'))
+
+    if flask.request.method == 'POST':
+        # receive values from html form
+        #TODO do we need some security checks?
         new_title = flask.request.form['new-title']
         new_desc = flask.request.form['new-desc']
         new_category = flask.request.form['new-category']
@@ -98,6 +128,13 @@ def edit_item(item_name):
 
 @app.route('/catalog/<item_name>/delete', methods=['GET', 'POST'])
 def del_item(item_name):
+    if 'g_user_id' not in flask.session:
+        # User is not authenticated
+        return flask.redirect(flask.url_for('show_categories'))
+    if db.user_authorization(item_name, flask.session) == False:
+        # User is not authorized to make changes
+        return flask.redirect(flask.url_for('show_categories'))
+
     if flask.request.method == 'POST':
         # find the item's category
         cat_of_item = db.get_item_by_title(item_name).category.title
@@ -113,20 +150,29 @@ def del_item(item_name):
                                item=db.get_item_by_title(item_name))
 
 
-@app.route('/catalog.json')
-def json_endpoint():
-    pass
+@app.route('/catalog.JSON')
+def getCatalog():
+    """ Returns a JSON version of the catalog """
+    output_json = []
+    categories = db.get_categories()
+    for category in categories:
+        items = db.get_items_of_category(category.title)
+        category_output = {}
+        category_output["id"] = category.id
+        category_output["name"] = category.title
+        category_output["items"] = [i.serialize for i in items]
+        output_json.append(category_output)
+    return flask.jsonify(Categories=output_json)
 
 
 ################################  Google Signin ###############################
 @app.route('/logout')
 def logout():
-    flask.session.pop('userid', None)
+    flask.session.pop('g_user_id', None)
     flask.session.pop('name', None)
     flask.session.pop('email', None)
     flask.session.pop('logged_in', None)
-    return render_template('logout.html',
-                           client_id=CLIENT_ID)
+    return "You are logged out!"
 
 
 @app.route('/login')
@@ -147,10 +193,11 @@ def gconnect():
 
     # ID token is valid.
     # Get the user's Google Account ID from the decoded token.
-    flask.session['userid'] = idinfo['sub']
+    flask.session['g_user_id'] = idinfo['sub']
     flask.session['name'] = idinfo['name']
     flask.session['email'] = idinfo['email']
     flask.session['logged_in'] = True
+    db.register_user(flask.session)
     return responseWith("ID Token is valid", 200)
 
 

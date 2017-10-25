@@ -46,6 +46,20 @@ class Category(Base):
     # through it's title. I'd argue that this assumption absolutely valid,
     # because otherwise the required url routings wouldn't work at all!?
 
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title
+        }
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    g_user_id = Column(String, nullable=True, unique=True)
+    name = Column(String, nullable=False)
+    email = Column(String, nullable=True)
+
 
 class Item(Base):
     # specify the tablename
@@ -57,6 +71,18 @@ class Item(Base):
     # This is how we create 'One-To-Many'-relationships in SQLAlchemy:
     category_id = Column(Integer, ForeignKey("categories.id"))
     category = relationship("Category", back_populates="items")
+    creator_id = Column(Integer, ForeignKey('users.id'))
+    creator = relationship(User)
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'category.id': self.category_id
+        }
+
 
 
 # Leave the following code lines at the end of the file:

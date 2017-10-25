@@ -6,7 +6,8 @@
     <ul class="nav navbar-nav pull-right">
       <li>
         {% if session.logged_in %}
-          <a class="pmd-ripple-effect" href="{{ url_for('logout') }}">Sign-out</a>
+          <a class="pmd-ripple-effect" href="{{ url_for('login') }}">Sign-out</a>
+          <!-- TODO build own logout page and add the href!? -->
         {% else %}
           <a class="pmd-ripple-effect" href="{{ url_for('login') }}">Sign-in</a>
         {% endif %}

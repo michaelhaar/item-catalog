@@ -28,21 +28,21 @@ for category in categories:
     print("- " + category.title)
 
 
-# Let's try to add some items to the database, if there aren't any
-description_placeholder = "Lorem ipsum dolor sit amet, consetetur sadipscing"
-if db.item_count() == 0:
-    db.add_item("Stick", description_placeholder, "Hockey")
-    db.add_item("Goggles", description_placeholder, "Snowboarding")
-    db.add_item("Snowboard", description_placeholder, "Snowboarding")
-    db.add_item("Frisbee", description_placeholder, "Frisbee")
-    db.add_item("Bat", description_placeholder, "Baseball")
-    db.add_item("Two shinguards", description_placeholder, "Soccer")
-    db.add_item("Shinguards", description_placeholder, "Soccer")
-    db.add_item("Jersey", description_placeholder, "Soccer")
-    db.add_item("Soccer Cleats", description_placeholder, "Soccer")
-
-# Print soccer items
-soccer_items = db.get_items_of_category("Soccer")
-print("You'll need the following items if you wanna play soccer:")
-for soccer_item in soccer_items:
-    print("- " + soccer_item.title)
+# # Let's try to add some items to the database, if there aren't any
+# description_placeholder = "Lorem ipsum dolor sit amet, consetetur sadipscing"
+# if db.item_count() == 0:
+#     db.add_item("Stick", description_placeholder, "Hockey")
+#     db.add_item("Goggles", description_placeholder, "Snowboarding")
+#     db.add_item("Snowboard", description_placeholder, "Snowboarding")
+#     db.add_item("Frisbee", description_placeholder, "Frisbee")
+#     db.add_item("Bat", description_placeholder, "Baseball")
+#     db.add_item("Two shinguards", description_placeholder, "Soccer")
+#     db.add_item("Shinguards", description_placeholder, "Soccer")
+#     db.add_item("Jersey", description_placeholder, "Soccer")
+#     db.add_item("Soccer Cleats", description_placeholder, "Soccer")
+#
+# # Print soccer items
+# soccer_items = db.get_items_of_category("Soccer")
+# print("You'll need the following items if you wanna play soccer:")
+# for soccer_item in soccer_items:
+#     print("- " + soccer_item.title)

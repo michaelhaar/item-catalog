@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="{{ url_for('add_item', category_name=category) }}" method="post">
+  <div class="pmd-card card-default pmd-z-depth">
+
+    <div class="pmd-card-title card-header-border text-center">
+      <h2>Add Item to <strong>{{ category_name }}</strong> Category</h2>
+    </div>
+
+    <div class="pmd-card-body">
+      <!-- Title input -->
+      <div class="form-group">
+        <label for="item-title" class="control-label">Title</label>
+        <input required type="text" id="item-title" class="form-control" name="item-title">
+      </div>
+      <!-- Textarea for description input -->
+      <div class="form-group">
+        <label for="item-desc" class="control-label">Description</label>
+        <textarea id="item-desc" class="form-control" name="item-desc"></textarea>
+      </div>
+      <!-- Submit -->
+      <button type="submit" class="btn pmd-ripple-effect btn-warning btn-block"> SUBMIT </button >
+    </div>
+  </div>
+</form>
+{% endblock %}

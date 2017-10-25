@@ -11,4 +11,16 @@
       </a>
     {% endfor %}
   </div>
+
+  <!-- Show the floating button only if the user is logged in. -->
+  {% if session.logged_in %}
+    <!-- Floating Action Button like Google Material -->
+    <!-- see: http://propeller.in/docs/floating-button.php -->
+    <div class="menu pmd-floating-action" role="navigation">
+      <a class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-warning floating-btn-custom" data-title="Add" href="{{ url_for('add_item', category_name=category) }}">
+        		<span class="pmd-floating-hidden">Primary</span>
+        		<i class="material-icons pmd-sm">add</i>
+        	</a>
+    </div>
+  {% endif %}
 {% endblock %}
