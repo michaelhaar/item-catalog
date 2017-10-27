@@ -1,30 +1,24 @@
-# SQLAlchemy-intro
-This project was part of my Full Stack Web Developer Nanodegree at Udacity. In this miniproject we used SQLAlchemy to perform CRUD (Create-Read-Update-Delete) operations on a database.
-
-### Database Structure
-Assume we want to model the menus of some restaurants in a database.
-![Image of three restaurant menus](https://github.com/michi1992/item-catalog/blob/master/images_for_readme/overview.png)
-
-Therefore we will use the following database structure:
-
-![Image of the Databasestructure](https://github.com/michi1992/item-catalog/blob/master/images_for_readme/database_structure.png)
-
-The database consists of two tables called ``restaurant`` and ``menu_item`` and its columns like name, id, etc. Additionally the ``menu_item`` holds a foreign key to the related restaurant id.
+# Item-Catalog
+This project was part of my Full Stack Web Developer Nanodegree at Udacity. In this project we developed an application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
 
 ## Installing the Virtual Machine
-We are using a virtual machine (VM) to run an SQL database server and a Python script that uses it. The VM is a Linux server system that runs on top of your own computer. The required steps to setup the virtual machine can be found in the separated [vm-setup.md](https://github.com/michi1992/SQLAlchemy-intro/blob/master/vm-setup.md) file.
+We are using a virtual machine (VM) to run an SQL database server and some Python scripts that use it. The VM is a Linux server system that runs on top of your own computer. The required steps to setup the virtual machine can be found in the separated [vm-setup.md](https://github.com/michi1992/SQLAlchemy-intro/blob/master/vm-setup.md) file.
 
 
 ## Usage
-1. Clone this repository by executing ``git clone https://github.com/michi1992/item-catalog`` into your terminal window.
-2. [Install the virtual machine.](https://github.com/michi1992/item-catalog/blob/master/vm-setup.md)
-3. Enter ``cd item-catalog/vagrant`` to switch to the vagrant directory.
-4. Start the virtual-machine: ``vagrant up``.
-5. Log into the VM: ``vagrant ssh``
-6. When you are successfully logged in, type ``cd /vagrant`` to switch the working directory.
-7. Run ``python database_setup.py`` to create an empty database with Python and SQLAlchemy.
-8. Run ``python lotsofmenus.py`` to populate the database with some entries provided by Udacity.
-9. Take a closer look at the ``simple_crud.py``-file in order to see how to manipulate the database from Python and SQLALchemy.
+1. Clone this repository by executing ``git clone https://github.com/michi1992/item-catalog`` in your terminal window.
+2. Obtain a Google CLIENT ID by following [this guide](https://developers.google.com/identity/sign-in/web/devconsole-project). Add ``https://localhost:5000`` to the javascript origins and the authorized forwarding urls.
+3. Rename the file to ``client_secrets.json`` and copy&paste it into the vagrant folder. 
+4. [Install the virtual machine.](https://github.com/michi1992/item-catalog/blob/master/vm-setup.md)
+5. Run ``cd item-catalog/vagrant`` to switch to the vagrant directory.
+6. Start the virtual-machine: ``vagrant up``.
+7. Log into the VM: ``vagrant ssh``.
+8. When you are successfully logged in, type ``cd /vagrant`` to switch the working directory of your VM.
+9. Run ``python database_setup.py`` to create an empty database.
+10. Run ``python populate_database.py`` to create the item categories.
+11. Type ``python item_catalog.py`` to start the server..
+12. Finally you can visit the webpage: [https://localhost:5000](https://localhost:5000)
+
 
 ## Authors
 
