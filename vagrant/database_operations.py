@@ -67,7 +67,6 @@ class DatabaseOperations:
             self.add_user(auth_session)
             return True
 
-
     def user_authorization(self, itm_title, auth_session):
         item = self.get_item_by_title(itm_title)
         if item.creator.g_user_id == auth_session['g_user_id']:

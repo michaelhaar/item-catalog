@@ -54,25 +54,25 @@ def show_categories():
     # Jinja2 templates, which are really awesome.
     # see: http://flask.pocoo.org/docs/0.12/quickstart/#rendering-templates
     return render_template('categories.html',
-                            page_heading="Catalog App",
-                            categories=db.get_categories())
+                           page_heading="Catalog App",
+                           categories=db.get_categories())
 
 
 @app.route('/catalog/<category_name>/items')
 def show_items(category_name):
     """ Displays a list of all items in this category """
     return render_template('items.html',
-                            page_heading=category_name + ' Items',
-                            items=db.get_items_of_category(category_name),
-                            category=category_name)
+                           page_heading=category_name + ' Items',
+                           items=db.get_items_of_category(category_name),
+                           category=category_name)
 
 
 @app.route('/catalog/<category_name>/<item_name>')
 def show_item(category_name, item_name):
     """ Returns the item's detail page """
     return render_template('item.html',
-                            page_heading=item_name,
-                            item=db.get_item_by_title(item_name))
+                           page_heading=item_name,
+                           item=db.get_item_by_title(item_name))
 
 
 @app.route('/catalog/<category_name>/add', methods=['GET', 'POST'])
@@ -83,7 +83,7 @@ def add_item(category_name):
 
     if flask.request.method == 'POST':
         # receive values from html form
-        #TODO do we need some security checks?
+        # TODO do we need some security checks to deny XSS or SQL injection!?
         item_title = flask.request.form['item-title']
         item_desc = flask.request.form['item-desc']
         # store item in our database
@@ -97,18 +97,19 @@ def add_item(category_name):
         return render_template("add_item.html",
                                category=category_name)
 
+
 @app.route('/catalog/<item_name>/edit', methods=['GET', 'POST'])
 def edit_item(item_name):
     if 'g_user_id' not in flask.session:
         # User is not authenticated
         return flask.redirect(flask.url_for('show_categories'))
-    if db.user_authorization(item_name, flask.session) == False:
+    if db.user_authorization(item_name, flask.session) is False:
         # User is not authorized to make changes
         return flask.redirect(flask.url_for('show_categories'))
 
     if flask.request.method == 'POST':
         # receive values from html form
-        #TODO do we need some security checks?
+        # TODO do we need some security checks? --> XSS, SQL-injection
         new_title = flask.request.form['new-title']
         new_desc = flask.request.form['new-desc']
         new_category = flask.request.form['new-category']
@@ -131,7 +132,7 @@ def del_item(item_name):
     if 'g_user_id' not in flask.session:
         # User is not authenticated
         return flask.redirect(flask.url_for('show_categories'))
-    if db.user_authorization(item_name, flask.session) == False:
+    if db.user_authorization(item_name, flask.session) is False:
         # User is not authorized to make changes
         return flask.redirect(flask.url_for('show_categories'))
 
@@ -165,7 +166,7 @@ def getCatalog():
     return flask.jsonify(Categories=output_json)
 
 
-################################  Google Signin ###############################
+# GOOGLE SIGN-IN PART:
 @app.route('/logout')
 def logout():
     flask.session.pop('g_user_id', None)
@@ -179,7 +180,7 @@ def logout():
 def login():
     return render_template('login.html',
                            client_id=CLIENT_ID,
-                           tokensignin_url = flask.url_for('gconnect'))
+                           tokensignin_url=flask.url_for('gconnect'))
 
 
 @app.route('/gconnect', methods=['POST'])
@@ -233,4 +234,4 @@ if __name__ == '__main__':
     # not from any other computer.
     # Since we are using a Vagrant environment (=virtual machine), we must make
     # our server publicly available. This is done with the following line:
-    app.run(host = '0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)

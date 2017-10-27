@@ -46,12 +46,6 @@ class Category(Base):
     # through it's title. I'd argue that this assumption absolutely valid,
     # because otherwise the required url routings wouldn't work at all!?
 
-    @property
-    def serialize(self):
-        return {
-            'id': self.id,
-            'title': self.title
-        }
 
 class User(Base):
     __tablename__ = 'users'
@@ -82,7 +76,6 @@ class Item(Base):
             'description': self.description,
             'category.id': self.category_id
         }
-
 
 
 # Leave the following code lines at the end of the file:
