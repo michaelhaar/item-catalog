@@ -79,7 +79,7 @@ class Item(Base):
 
 
 # Leave the following code lines at the end of the file:
-engine = create_engine("sqlite:///%s" % DB_NAME)
+engine = create_engine("postgresql://catalog:topsecret@localhost/catalog")
 # (The engine represents the core interface to the database)
 # Finally create database (if not existing) and all tables:
 Base.metadata.create_all(engine)

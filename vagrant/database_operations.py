@@ -18,7 +18,7 @@ class DatabaseOperations:
         """ This funtion creates the `Session` object. """
         # Connect to the database.
         # (The engine represents the core interface to the database)
-        engine = create_engine('sqlite:///%s' % DB_NAME)
+        engine = create_engine("postgresql://catalog:topsecret@localhost/catalog")
         # Create a sessionmaker object.
         # (This object acts like a factory for producing new sessions)
         db_session = sessionmaker(bind=engine)
