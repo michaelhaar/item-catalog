@@ -38,9 +38,7 @@ db = DatabaseOperations()
 
 # This variable specifies the name of a file that contains the Google's OAuth
 # information for this application, including its client_id and client_secret.
-CLIENT_SECRETS_FILE = "client_secrets.json"
-with open(CLIENT_SECRETS_FILE) as json_data:
-    CLIENT_ID = json.load(json_data)['web']['client_id']
+CLIENT_ID = '713304857721-r72atdutco08u548b1ru6ujmt0lfod0n.apps.googleusercontent.com'  # noqa
 
 
 @app.route('/')
