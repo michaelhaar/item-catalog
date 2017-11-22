@@ -31,7 +31,8 @@ app = Flask(__name__)
 # cryptographically. Therefore we need a secret key. --> This means that
 # Users can read the content of our cookie, but not modify it.
 # See: http://flask.pocoo.org/docs/0.12/quickstart/#sessions
-app.secret_key = str(uuid.uuid4())
+app.secret_key = '56b4a306-c48f-43d5-bed8-415a6c8723cf'
+# generated with: str(uuid.uuid4())
 
 # Our main database object
 db = DatabaseOperations()
